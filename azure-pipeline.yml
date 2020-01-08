@@ -11,7 +11,7 @@ jobs:
       workspace:
         clean: all
     steps: 
-    - bash: echo building
+    - bash: chmod +x ./scripts/build.sh && ./scripts/build.sh
       displayName: Build
 
     - bash: echo deploying 
