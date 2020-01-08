@@ -55,7 +55,7 @@ resource "azurerm_application_insights" "EmoticonPublisher" {
 }
 
 resource "azurerm_function_app" "EmoticonPublisher" {
-  name                      = "EmoticonPublisher-Prod"
+  name                      = "EmoticonPublisher"
   location                  = "${var.resource_location}"
   resource_group_name       = "${var.resource_group_name}"
   app_service_plan_id       = "${azurerm_app_service_plan.EmoticonPublisher.id}"
