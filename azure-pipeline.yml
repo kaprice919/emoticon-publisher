@@ -1,0 +1,74 @@
+trigger:
+    batch: true
+    branches:
+      include:
+      - master
+    paths:
+      exclude:
+      - README.md
+      - docs/*
+
+
+stages:
+- stage: Build
+    displayName: Build, Test and Publish Artifacts
+    jobs:
+    - job: 
+    variables:
+        - group: EmoticonPublisher
+    displayName: Build, Test and Publish Artifacts
+    pool:
+        vmImage: 'ubuntu-16.04'
+        clean: all
+    steps: 
+    - bash: echo hello, world
+    # - bash: ./scripts/build.sh
+    #     displayName: Build
+    # - task: CopyFiles@2
+    #     displayName: 'Copy build artifacts'
+    #     inputs:
+    #     sourceFolder: $(Build.SourcesDirectory)
+    #     contents: |
+    #         scripts/*
+    #         scripts/docker/*
+    #         app.tf
+    #         EmoticonPublisher/bin/Release/**
+    #     targetFolder: $(Build.ArtifactStagingDirectory)
+    #     cleanTargetFolder: true
+    # - publish: $(Build.ArtifactStagingDirectory)
+    #     artifact: $(Build.SourceVersion)
+
+# - stage: Deploy
+#     displayName: Deploy
+#     condition: succeeded('Build')
+#     jobs:  
+#     - deployment: 
+#         displayName: 'Deploy to Dev'
+#         pool:
+#         vmImage: 'ubuntu-16.04'
+#         workspace:
+#             clean: all
+#         continueOnError: false
+#         environment: Dev
+#         variables:
+#         - group: FranchiseToNetSuite-dev
+#         - group: HI-Onyx
+#         strategy: 
+#         runOnce:
+#             deploy:
+#             steps:
+#             - download: current
+#                 artifact: $(Build.SourceVersion) 
+#             - bash: chmod +x scripts/*.sh && chmod +x scripts/docker/*.sh
+#                 displayName: Make scripts executable
+#                 workingDirectory: $(Pipeline.Workspace)/$(Build.SourceVersion)
+#             - bash: ./scripts/docker/run_deploy_in_docker.sh dev
+#                 displayName: Deploy
+#                 workingDirectory: $(Pipeline.Workspace)/$(Build.SourceVersion)
+#                 env:
+#                 ARM_CLIENT_ID: "694dc268-3ceb-47d3-8ddc-d1c032a87dfa"
+#                 ARM_CLIENT_SECRET: $(ClientSecret-Deployment)
+#                 ARM_TENANT_ID: "43e5deba-2c54-43a4-9a10-c9f10b1c66a5"
+#                 ARM_SUBSCRIPTION_ID: "21529805-bde1-42c5-b7a3-c6aff7950aae"
+#                 TERRAFORM_BACKEND_STORAGE_NAME: "hiscdevterraform"
+#                 CONTAINER_REGISTRY_PASSWORD: $(Container-Registry-Password)
