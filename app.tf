@@ -17,13 +17,17 @@ variable "resource_group_name" {
     description = "Azure resource group name."
     default = "emoticon_service"
 }
+variable "storage_account_name" {
+    description = "The name of the storage account."
+    default = "storageaccountemotiaab2"
+}
 variable "resource_location" {
     description = "Azure resource location."
     default = "Central US"
 }
 
 resource "azurerm_storage_account" "EmoticonPublisher" {
-  name                     = "storageaccountemotiaab2"
+  name                     = "${var.storage_account_name}"
   resource_group_name      = "${var.resource_group_name}"
   location                 = "${var.resource_location}"
   account_tier             = "Standard"
