@@ -11,9 +11,12 @@ set -u
 echo "Starting Deployment"
 
 echo Configure Terraform
-terraform init -reconfigure
+terraform init \
+    -reconfigure \
+    -backend-config="storage_account_name=deployterraform" \
+    -backend-config="resource_group_name=emoticon_service"
 
 echo Deploy Infrastructure
 terraform apply -auto-approve
 
-echo Deploying functions...
+echo Deploying functions

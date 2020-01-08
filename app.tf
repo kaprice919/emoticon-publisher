@@ -11,7 +11,7 @@ terraform {
 
 variable "app_name" {
     description = "Azure function app name."
-    default = "emoticonservice"
+    default = "EmoticonPublisher"
 }
 variable "resource_group_name" {
     description = "Azure resource group name."
@@ -27,7 +27,7 @@ variable "resource_location" {
 }
 
 resource "azurerm_storage_account" "EmoticonPublisher" {
-  name                     = "${var.storage_account_name}"
+  name                     = "emoticonpublisherapp"
   resource_group_name      = "${var.resource_group_name}"
   location                 = "${var.resource_location}"
   account_tier             = "Standard"
@@ -55,11 +55,13 @@ resource "azurerm_application_insights" "EmoticonPublisher" {
 }
 
 resource "azurerm_function_app" "EmoticonPublisher" {
-  name                      = "${var.app_name}"
+  name                      = "EmoticonPublisher-Prod"
   location                  = "${var.resource_location}"
   resource_group_name       = "${var.resource_group_name}"
   app_service_plan_id       = "${azurerm_app_service_plan.EmoticonPublisher.id}"
   storage_connection_string = "${azurerm_storage_account.EmoticonPublisher.primary_connection_string}"
   version                   = "~3"
-
+  identity {
+    type = "SystemAssigned"
+  }
 }
