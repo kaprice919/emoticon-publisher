@@ -5,11 +5,11 @@ trigger:
 
 jobs:  
   - job:
-  displayName: Build Test and Deploy Dev
-  pool:
-    vmImage: 'ubuntu-16.04'
-    workspace:
-      clean: all
-  steps: 
-  - bash: echo building
-    displayName: Build
+    displayName: Build Test and Deploy Dev
+    pool:
+      vmImage: 'ubuntu-16.04'
+      workspace:
+        clean: all
+    steps: 
+    - bash: echo building
+      displayName: Build
