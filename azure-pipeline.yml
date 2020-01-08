@@ -4,12 +4,12 @@ trigger:
     - master
 
 jobs:  
-  - job: 
+  - job:
   displayName: Build Test and Deploy Dev
   pool:
-  vmImage: 'ubuntu-16.04'
-  workspace:
-    clean: all
+    vmImage: 'ubuntu-16.04'
+    workspace:
+      clean: all
   steps: 
-  - bash: ./scripts/build.sh
+  - bash: echo building
     displayName: Build
