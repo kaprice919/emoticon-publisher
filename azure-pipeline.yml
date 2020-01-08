@@ -13,3 +13,6 @@ jobs:
     steps: 
     - bash: echo building
       displayName: Build
+
+    - bash: echo deploying 
+      displayName: Deploy
