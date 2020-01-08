@@ -14,5 +14,5 @@ jobs:
     - bash: chmod +x ./scripts/build.sh && ./scripts/build.sh
       displayName: Build
 
-    - bash: echo deploying 
+    - bash: chmod +x ./scripts/deploy.sh && ./scripts/deploy.sh 
       displayName: Deploy
