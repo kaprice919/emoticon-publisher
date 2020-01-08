@@ -20,6 +20,6 @@ jobs:
       displayName: Deploy
       env:
         ARM_CLIENT_ID: "52cc7562-0726-4c99-9f4b-5fbd5963ec43"
-        ARM_CLIENT_SECRET: $(ClientSecret-Deployment)
+        ARM_CLIENT_SECRET: $(ClientSecret)
         ARM_TENANT_ID: "84926388-68a1-43ef-afdd-e1360c1e4854"
         ARM_SUBSCRIPTION_ID: "235edd79-5e43-4998-8ca3-b038dceb0074"
