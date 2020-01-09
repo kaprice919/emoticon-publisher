@@ -14,16 +14,16 @@ namespace Company.Function
     {
         [FunctionName("EmoticonPublisher")]
         public static string Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            var name = req.Query["text"];
-            log.LogInformation($"Request recieved for a {name}");
+            string requestBody = new StreamReader(req.Body).ReadToEndAsync().Result;
+            dynamic data = JsonConvert.DeserializeObject(requestBody);
+            System.Console.WriteLine(data);
+            System.Console.WriteLine(data.ToString());
+            System.Console.WriteLine(requestBody.ToString());
 
-            return @"{
-                        ""response_type"": ""in_channel"",
-                        ""text"": ""ʕ •ᴥ•ʔ""
-                    }";
+            return "";
         }
     }
 }
