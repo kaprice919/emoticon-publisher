@@ -6,22 +6,37 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net;
 using System.Text;
+using System.IO;
+using System.Threading.Tasks;
 
-namespace Company.Function
+namespace EmoticonPublisher
 {
-    public static class EmoticonPublisher
+    public static class EmoticonService
     {
-        [FunctionName("EmoticonPublisher")]
-        public static HttpResponseMessage Run(
+        [FunctionName("EmoticonService")]
+        public static async Task<HttpResponseMessage> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            var response = new {response_type = "in_channel", text = "ʕ•ᴥ•ʔ"};
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            dynamic data = JsonConvert.DeserializeObject(requestBody);
+            string emoticonName = data?.text;
+
+            string emoticonText = EmoticonFactory.generateEmoticon(emoticonName);
+            return buildValidResponse(emoticonText);
+        }
+
+        private static HttpResponseMessage buildValidResponse(string emoticonText)
+        {
+            var response = new { response_type = "in_channel", text = emoticonText };
             var responseJson = JsonConvert.SerializeObject(response);
 
-            return new HttpResponseMessage(HttpStatusCode.OK) {
+            var responsePackage = new HttpResponseMessage(HttpStatusCode.OK)
+            {
                 Content = new StringContent(responseJson, Encoding.UTF8, "application/json")
             };
+            
+            return responsePackage;
         }
     }
 }
