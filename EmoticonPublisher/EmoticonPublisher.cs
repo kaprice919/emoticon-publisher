@@ -17,13 +17,7 @@ namespace Company.Function
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            string requestBody = new StreamReader(req.Body).ReadToEndAsync().Result;
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            System.Console.WriteLine(data);
-            System.Console.WriteLine(data.ToString());
-            System.Console.WriteLine(requestBody.ToString());
-
-            return "";
+            return "ʕ •ᴥ•ʔ";
         }
     }
 }
