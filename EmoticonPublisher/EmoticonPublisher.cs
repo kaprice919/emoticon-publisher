@@ -6,26 +6,19 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net;
 using System.Text;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace Company.Function
 {
     public static class EmoticonPublisher
     {
         [FunctionName("EmoticonPublisher")]
-        public static async Task<HttpResponseMessage> Run(
+        public static HttpResponseMessage Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            string queryString = req.QueryString.ToString();
-            string responseString = $"queryString: {queryString}     Body: {requestBody}";
 
-            var response = new {response_type = "in_channel", text = responseString};
+            var response = new {response_type = "in_channel", text = "ʕ•ᴥ•ʔ"};
             var responseJson = JsonConvert.SerializeObject(response);
-
-
 
             return new HttpResponseMessage(HttpStatusCode.OK) {
                 Content = new StringContent(responseJson, Encoding.UTF8, "application/json")
