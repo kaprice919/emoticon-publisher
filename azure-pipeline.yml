@@ -15,6 +15,9 @@ jobs:
     steps: 
     - bash: chmod +x ./scripts/build.sh && ./scripts/build.sh
       displayName: Build
+      
+    - bash: ./scripts/run_tests.sh
+      displayName: Test
 
     - bash: chmod +x ./scripts/deploy.sh && ./scripts/deploy.sh 
       displayName: Deploy
