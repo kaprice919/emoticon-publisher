@@ -5,8 +5,13 @@
 
 .DS_Store
 
-# Specflow
 *.feature.cs
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
 
 # User-specific files
 *.suo
