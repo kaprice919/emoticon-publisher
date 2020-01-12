@@ -5,7 +5,7 @@ namespace AcceptanceTests
     [Binding]
     public class EmoticonPubisherSteps
     {
-        [Given("the slack slash command /emoticon is run")]
+        [Given("the slack command emoticon is run")]
         public void theSlackSlashCommandEmoticonsIsRun()
         {
 
