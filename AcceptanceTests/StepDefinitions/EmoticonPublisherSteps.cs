@@ -8,7 +8,7 @@ namespace AcceptanceTests
         [Given("the slack command emoticon is run")]
         public void theSlackSlashCommandEmoticonsIsRun()
         {
-
+            
         }
         [When("the EmoticonPublisher function gets a POST request with the following data")]
         public void EmoticonPublisherFunctionRunsWhenPOSTRequestWithData(string requestBody)
