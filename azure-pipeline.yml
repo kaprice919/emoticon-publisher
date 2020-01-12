@@ -14,7 +14,7 @@ jobs:
     - group: emoticonpublisher
     steps: 
     - bash: chmod +x ./scripts/build.sh && ./scripts/build.sh
-      displayName: Build and test
+      displayName: Build
 
     - bash: chmod +x ./scripts/deploy.sh && ./scripts/deploy.sh 
       displayName: Deploy
