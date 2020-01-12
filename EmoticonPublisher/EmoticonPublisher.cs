@@ -16,7 +16,9 @@ namespace Company.Function
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            var response = new {response_type = "in_channel", text = "ʕ•ᴥ•ʔ"};
+            string text = req.Query["text"];
+
+            var response = new {response_type = "in_channel", text = text};
             var responseJson = JsonConvert.SerializeObject(response);
 
             return new HttpResponseMessage(HttpStatusCode.OK) {
