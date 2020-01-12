@@ -32,7 +32,7 @@ namespace AcceptanceTests
         private static void StartFunctionHost()
         {
             string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string functionDirectory = Path.Combine(assemblyDir, $"../../../../EmoticonPublisher/bin/Release/netcoreapp3.0/");
+            string functionDirectory = Path.Combine(assemblyDir, $"../../../../EmoticonPublisher/bin/Release/netcoreapp2.2/");
             ProcessStartInfo functionInfo = new ProcessStartInfo()
             {
                 FileName = "func",
