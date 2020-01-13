@@ -1,3 +1,5 @@
+using System.Net.Http;
+using System.Text;
 using TechTalk.SpecFlow;
 
 namespace AcceptanceTests
@@ -11,9 +13,15 @@ namespace AcceptanceTests
             
         }
         [When("the EmoticonPublisher function gets a POST request with the following data")]
-        public void EmoticonPublisherFunctionRunsWhenPOSTRequestWithData(string requestBody)
+        public async void EmoticonPublisherFunctionRunsWhenPOSTRequestWithData(string requestBody)
         {
-
+            HttpClient client = new HttpClient();
+            HttpResponseMessage responseMessage = await client.PostAsync
+            (
+                $"http://localhost:7071/admin/functions/EmoticonPublisher", 
+                new StringContent("requestBody=fds&token=fds", UnicodeEncoding.UTF8, "application/x-www-form-urlencoded")
+            );
+            responseMessage.EnsureSuccessStatusCode();
         }
 
         [Then("we respond to slack with the following data")]
