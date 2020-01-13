@@ -28,7 +28,7 @@ namespace Company.Function
                 emoticon = "ʕ•ᴥ•ʔ";
             }
 
-            var response = new {response_type = "in_channel", text = req.Headers["User-Agent"].ToString()};
+            var response = new {response_type = "in_channel", text = emoticon};
             var responseJson = JsonConvert.SerializeObject(response);
 
             return new HttpResponseMessage(HttpStatusCode.OK) {
