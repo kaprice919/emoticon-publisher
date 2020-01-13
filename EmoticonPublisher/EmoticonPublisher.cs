@@ -19,10 +19,16 @@ namespace Company.Function
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            var reqData = parseUrlEncoded(req);
-            var reqText = reqData["text"];
+            var reqData = parseQueryString(req);
+            var emoticonName = reqData["text"];
 
-            var response = new {response_type = "in_channel", text = reqText};
+            var emoticon = "Emoticon not recognized.";
+            if (emoticonName.ToLower().Equals("koala"))
+            {
+                emoticon = "ʕ•ᴥ•ʔ";
+            }
+
+            var response = new {response_type = "in_channel", text = emoticon};
             var responseJson = JsonConvert.SerializeObject(response);
 
             return new HttpResponseMessage(HttpStatusCode.OK) {
@@ -30,7 +36,7 @@ namespace Company.Function
             };
         }
 
-        private static Dictionary<string, string> parseUrlEncoded(HttpRequest req){
+        private static Dictionary<string, string> parseQueryString(HttpRequest req){
             
             Dictionary<string, string> reqData = new Dictionary<string, string>();
 
