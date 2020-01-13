@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net;
 using System.Text;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Company.Function
 {
@@ -16,14 +19,29 @@ namespace Company.Function
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            string requestResponse = $"content type: {req.ContentType}";
+            var reqData = parseUrlEncoded(req);
+            var reqText = reqData["text"];
 
-            var response = new {response_type = "in_channel", text = requestResponse};
+            var response = new {response_type = "in_channel", text = reqText};
             var responseJson = JsonConvert.SerializeObject(response);
 
             return new HttpResponseMessage(HttpStatusCode.OK) {
                 Content = new StringContent(responseJson, Encoding.UTF8, "application/json")
             };
+        }
+
+        private static Dictionary<string, string> parseUrlEncoded(HttpRequest req){
+            
+            Dictionary<string, string> reqData = new Dictionary<string, string>();
+
+            var requestBody = new StreamReader(req.Body).ReadToEndAsync().Result;
+            foreach (var item in requestBody.Split('&'))
+            {
+                    var keyvalue = item.Split('=');
+                    reqData.Add(keyvalue[0],keyvalue[1]);
+            }
+
+            return reqData;
         }
     }
 }
