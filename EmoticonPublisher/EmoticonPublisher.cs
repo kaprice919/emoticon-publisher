@@ -6,9 +6,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net;
 using System.Text;
-using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace Company.Function
 {
@@ -19,8 +18,9 @@ namespace Company.Function
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            var reqData = parseQueryString(req);
-            var emoticonName = reqData["text"];
+            var reqBody = new StreamReader(req.Body).ReadToEndAsync().Result;
+            var reqData = QueryHelpers.ParseQuery(reqBody);
+            var emoticonName = reqData["text"].ToString();
 
             var emoticon = "Emoticon not recognized.";
             if (emoticonName.ToLower().Equals("koala"))
@@ -34,20 +34,6 @@ namespace Company.Function
             return new HttpResponseMessage(HttpStatusCode.OK) {
                 Content = new StringContent(responseJson, Encoding.UTF8, "application/json")
             };
-        }
-
-        private static Dictionary<string, string> parseQueryString(HttpRequest req){
-            
-            Dictionary<string, string> reqData = new Dictionary<string, string>();
-
-            var requestBody = new StreamReader(req.Body).ReadToEndAsync().Result;
-            foreach (var item in requestBody.Split('&'))
-            {
-                    var keyvalue = item.Split('=');
-                    reqData.Add(keyvalue[0],keyvalue[1]);
-            }
-
-            return reqData;
         }
     }
 }
