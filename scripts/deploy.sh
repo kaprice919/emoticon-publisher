@@ -29,7 +29,7 @@ echo Zipping deployment files
 cd "EmoticonPublisher/bin/Release/"
 
 rm -f EmoticonPublisher.zip
-pushd netcoreapp2.2
+pushd netcoreapp3.1
     zip -r ../EmoticonPublisher.zip .
 popd
 
