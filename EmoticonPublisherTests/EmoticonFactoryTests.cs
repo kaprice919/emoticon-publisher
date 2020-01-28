@@ -15,5 +15,15 @@ namespace EmoticonPublisherTests
             string actualEmoticonText = EmoticonFactory.createEmoticon(emoticonName);
             actualEmoticonText.Should().BeEquivalentTo(expectedEmoticonText);
         }
+
+        [Fact]
+        public void TestEmoticonFactoryReturnsUnrecognizedTextWhenGivenBadEmoticon()
+        {
+            string commandName = "Bad Command";
+            string expectedText = "Command Not Recognized";
+
+            string actualText = EmoticonFactory.createEmoticon(commandName);
+            actualText.Should().BeEquivalentTo(expectedText);
+        }
     }
 }
