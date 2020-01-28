@@ -13,7 +13,7 @@ namespace EmoticonPublisher
         public static string createEmoticon(string emoticonName)
         {
             
-            return Emoticons.GetValueOrDefault(emoticonName.ToLower(), Commands.UnrecognizedInput);
+            return Emoticons.GetValueOrDefault(emoticonName.ToLower(), "Command Not Recognized");
         }
     }
 }
