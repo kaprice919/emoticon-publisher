@@ -9,7 +9,7 @@ using System.Text;
 using System.IO;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace Company.Function
+namespace EmoticonPublisher
 {
     public static class EmoticonPublisher
     {
@@ -20,15 +20,11 @@ namespace Company.Function
         {
             var reqBody = new StreamReader(req.Body).ReadToEndAsync().Result;
             var reqData = QueryHelpers.ParseQuery(reqBody);
-            var emoticonName = reqData["text"].ToString();
+            string emoticonName = reqData["text"].ToString();
 
-            var emoticon = "Emoticon not recognized.";
-            if (emoticonName.ToLower().Equals("koala"))
-            {
-                emoticon = "ʕ•ᴥ•ʔ";
-            }
+            string emoticonText = EmoticonFactory.createEmoticon(emoticonName);
 
-            var response = new {response_type = "in_channel", text = emoticon};
+            var response = new {response_type = "in_channel", text = emoticonText};
             var responseJson = JsonConvert.SerializeObject(response);
 
             return new HttpResponseMessage(HttpStatusCode.OK) {
