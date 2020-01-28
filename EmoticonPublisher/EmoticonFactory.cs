@@ -7,7 +7,9 @@ namespace EmoticonPublisher
         private static readonly Dictionary<string, string> Emoticons
             = new Dictionary<string, string>
         {
-            { "koala", "ʕ•ᴥ•ʔ" }
+            { "cat",      "(=^ェ^=)" },
+            { "confused", "¯\\(°_o)/¯" },
+            { "koala",    "ʕ•ᴥ•ʔ" }
         };
         
         public static string createEmoticon(string emoticonName)
