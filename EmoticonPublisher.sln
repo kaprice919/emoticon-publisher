@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmoticonPublisher", "EmoticonPublisher\EmoticonPublisher.csproj", "{0299C8C2-E859-4E76-BD6C-51D6A2034FE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmoticonPublisherTests", "EmoticonPublisherTests\EmoticonPublisherTests.csproj", "{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,5 +80,17 @@ Global
 		{C4FF1D2D-808D-4931-893F-7B6D02962014}.Release|x64.Build.0 = Release|Any CPU
 		{C4FF1D2D-808D-4931-893F-7B6D02962014}.Release|x86.ActiveCfg = Release|Any CPU
 		{C4FF1D2D-808D-4931-893F-7B6D02962014}.Release|x86.Build.0 = Release|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Debug|x64.Build.0 = Debug|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Debug|x86.Build.0 = Debug|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Release|x64.ActiveCfg = Release|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Release|x64.Build.0 = Release|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Release|x86.ActiveCfg = Release|Any CPU
+		{4E0574AA-4CA0-409F-BC87-22D4CACC85BE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
