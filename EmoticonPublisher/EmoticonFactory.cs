@@ -7,15 +7,18 @@ namespace EmoticonPublisher
         private static readonly Dictionary<string, string> Emoticons
             = new Dictionary<string, string>
         {
-            { "cat",      "(=^ェ^=)" },
-            { "confused", "¯\\(°_o)/¯" },
-            { "koala",    "ʕ•ᴥ•ʔ" }
+            { "ameno",        "༼ つ ◕_◕ ༽つ"   },
+            { "cat",          "(=^ェ^=)"      },
+            { "confused",     "¯\\(°_o)/¯"    },
+            { "stare",        "ಠ_ಠ"           },
+            { "koala",        "ʕ•ᴥ•ʔ"         },
+            { "lenny",        "( ͡° ͜ʖ ͡°)"      },
+            { "tableflip",    "(╯°□°）╯︵ ┻━┻" }
         };
         
         public static string createEmoticon(string emoticonName)
         {
-            
-            return Emoticons.GetValueOrDefault(emoticonName.ToLower(), "Command Not Recognized");
+            return Emoticons.GetValueOrDefault(emoticonName.ToLower().Trim(), "Command Not Recognized");
         }
     }
 }
