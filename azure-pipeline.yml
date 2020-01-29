@@ -13,6 +13,11 @@ jobs:
     variables:
     - group: emoticonpublisher
     steps: 
+    - task: UseDotNet@2
+      displayName: 'Install .net core 3.x'
+      inputs:
+        version: '3.x'
+        includePreviewVersions: true
     - bash: chmod +x ./scripts/build.sh && ./scripts/build.sh
       displayName: Build
 
