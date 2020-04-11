@@ -1,2 +1,3 @@
 # emoticon-publisher
-service that responds with classic ascii emoticons ʕ •ᴥ•ʔ
+A service/slack plugin that respond to slack slash commands with classic ascii emoticons ʕ •ᴥ•ʔ
+Usage: /emoticons koala
